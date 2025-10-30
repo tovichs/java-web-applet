@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Courses</title>
+    <style>
+        body { font-family: sans-serif; margin: 24px; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; }
+        th { background: #f2f2f2; }
+        .badge { background:#eee; padding:2px 6px; margin-right:6px; border-radius:4px; display:inline-block;}
+        nav a { margin-right: 12px; }
+    </style>
+</head>
+<body>
+<nav>
+    <a href="/courses">Courses</a>
+    <a href="/instructors">Instructors</a>
+    <a href="/sessions">Sessions</a>
+</nav>
+
+<h2>Courses</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th><th>Name</th><th>Description</th><th>Duration</th><th>Active</th><th>Instructors</th><th>Sessions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="c : ${courses}">
+
+        <td th:text="${c.id}"></td>
+        <td th:text="${c.name}"></td>
+        <td th:text="${c.description}"></td>
+        <td th:text="${c.duration}"></td>
+        <td th:text="${c.active}"></td>
+        <td>
+            <span th:each="i : ${c.instructors}" th:text="${i.name}" class="badge"></span>
+        </td>
+        <td>
+            <span th:each="s : ${c.sessions}" th:text="${s.id}" class="badge"></span>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

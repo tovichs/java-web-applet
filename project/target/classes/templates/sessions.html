@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Sessions</title>
+    <style>
+        body { font-family: sans-serif; margin: 24px; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; }
+        th { background: #f2f2f2; }
+        nav a { margin-right: 12px; }
+    </style>
+</head>
+<body>
+<nav>
+    <a href="/courses">Courses</a>
+    <a href="/instructors">Instructors</a>
+    <a href="/students">Students</a>
+    <a href="/sessions">Sessions</a>
+</nav>
+
+<h2>Course Sessions</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th><th>Course</th><th>Instructor</th><th>Student</th><th>Enrollment Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="s : ${sessions}">
+        <td th:text="${s.id}"></td>
+        <td th:text="${s.course.name}"></td>
+        <td th:text="${s.instructor.name}"></td>
+        <td th:text="${s.student.name}"></td>
+        <td th:text="${s.enrollmentDate}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
